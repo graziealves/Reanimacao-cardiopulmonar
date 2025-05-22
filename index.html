@@ -10,38 +10,38 @@
     
     <header>
 
-     <nav class="nav-br">
-        <div class="logo">
-            <h1>Logo</h1>
-        </div>
-        <div class="nav-list">
-            <ul>
-                <li class="nav-item"><a href="#" class="nav-link">Procedimento</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Quem somos</a></li>
+        <nav class="nav-br">
+            <div class="logo">
+                <h1>Logo</h1>
+            </div>
+            <div class="nav-list">
+                <ul>
+                    <li class="nav-item"><a href="#" class="nav-link">Procedimento</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Quem somos</a></li>
+                </ul>
+            </div>
 
-            </ul>
-        </div>
+            <img id="icon" src="./img/menuIMG.png" alt="Botão 'Sanduíche' para sinalizar o menu." onclick="menumb()">
+            
+        </nav>
 
-        <div class="mobile-menu-icon">
-            <button><img class="icon" scr="img/menuIMG.png" alt=""></button>
-         </div>
-         
-     <div class="mobile-menu">
-        <ul>
-            <li class="nav-item"><a href="#" class="nav-link">Procedimentos</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">Quem somos</a></li>    
-            <li class="nav-item"><a href="#" class="nav-link">N</a></li>     
+        <nav class="nav-mobile">
+            <div class="mobile-menu">
+                <ul>
+                    <li class="nav-item"><a href="#" class="nav-link">Procedimentos</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Quem somos</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Teste</a></li>
+                </ul>
+            </div>
+        </nav>
 
-        </ul>
-     </div>
-     </nav>
     </header> 
 
     <div id="container">
-        <header>
-            <a> CHAMAR EMERGENCIA</a>
-        </header>
-        <aside>
+        <div class="cabeca">
+            <a onclick="emergencia()">CHAMAR EMERGENCIA</a>
+        </div>
+        <aside id="hora-inicio">
             ASIDE
         </aside>
         <main>
@@ -53,12 +53,11 @@
         <section>
             SECTION
         </section>
-
     </div>
 
-    <div classs="flex-container">
+    <div class="flex-container">
         <section class="flex-controle">
-            <a> REANIMAÇÃO CARDIOPULMONAR </a>
+            <a>REANIMAÇÃO CARDIOPULMONAR</a>
         </section>
     </div>
 
@@ -68,11 +67,37 @@
         </div>
         <div class="item2">
             <a>Metrônomo</a>
-         </div>
-         <div class="item3">
+        </div>
+        <div class="item3">
             <a>Cronômetro</a>
-         </div>
+        </div>
     </div>
 
+    <script type="text/javascript">
+        function menumb() {
+            let menu = document.querySelector(".mobile-menu");
+            menu.style.display = menu.style.display === 'block' ? 'none' : 'block'
+        }
+
+        function emergencia() {
+            // Hora de início
+            let horainicio = document.querySelector("#hora-inicio");
+
+            const data = new Date();
+            let hora = data.getHours();
+            let minuto = data.getMinutes();
+            let segundo = data.getSeconds();
+
+            let horario = `${hora}:${minuto}:${segundo}`;
+            
+            horainicio.innerHTML = horario
+
+            // Hora de Mal-Súbito
+
+            // Ligação Automática
+        }
+
+        function
+    </script>
 </body>
 </html>
