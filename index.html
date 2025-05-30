@@ -50,7 +50,7 @@
             <a>HORA DE MAL-SÚBITO</a>
         </footer>
         <section>
-            SECTION
+            <input type="time">
         </section>
     </div>
 
@@ -61,7 +61,7 @@
     </div>
 
     <div id="container-manipulacao">
-        <div class="item1">
+        <div id="A" class="item1">
             <a>INICIAR MASSAGEM CARDÍACA</a>
         </div>
         <div class="item2">
@@ -75,11 +75,13 @@
     </div>
 
     <script type="text/javascript">
-        var icon = document.querySelector('#icon')
+        var icon = document.querySelector('#icon');
         var botaoMsg = document.querySelector('.item1');
+
 
         icon.addEventListener('click', menumb);
         botaoMsg.addEventListener('click', rcp);
+
 
         function menumb() {
             let menu = document.querySelector('.mobile-menu');
@@ -104,25 +106,39 @@
         }
 
         function rcp() {
+            // Declaração de variáveis.
             let circulo = document.querySelector('#circulo');
+            let botao = document.querySelector('.item1');
             const circulos = ['./img/circle1.png','./img/circle2.png'];
-            let i = 1
+            let i = 1;
 
-            
+            if (botao.id == 'A') {
+                // Mudar cor e texto do botão.
+                botao.style.backgroundColor = '#B22222'
+                botao.innerText = 'PARAR MASSAGEM CARDIACA'
 
-            function iniciarMetronomo () {
-                circulo.src = circulos[i];
-                i = (i + 1) % 2;
+                // Iniciar o Metrônomo
+                function iniciarMetronomo () {
+                    circulo.src = circulos[i];
+                    i = (i + 1) % 2;
+                }
+
+                // Intervalo de frequência do Metronomo.
+                intervalo = setInterval(iniciarMetronomo, 500);
+
+                //Mudar ID do botão, para quando desativar as funções.
+                botao.id = 'B';
             }
 
-            intervalo = setInterval(iniciarMetronomo, 5000);
+            else {
+                // Mudar cor e texto do botão.
+                botao.style.backgroundColor = '#0097b2'
+                botao.innerText = 'INICIAR MASSAGEM CARDIACA'
 
-            function pararMetronomo () {
                 clearInterval(intervalo);
-                circulo.src = './img/circle0.png'
+                circulo.src = './img/circle0.png';
+                botao.id = 'A';
             }
-
-            botaoMsg.addEventListener('click', pararMetronomo);
         }
     </script>
 </body>
