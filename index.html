@@ -39,8 +39,8 @@
     </header> 
 
     <div id="container">
-        <div class="cabeca">
-            <a onclick="emergencia()">CHAMAR EMERGENCIA</a>
+        <div id="C" class="cabeca">
+            <a>CHAMAR EMERGÊNCIA</a>
         </div>
         <aside id="hora-inicio"></aside>
         <main>
@@ -50,7 +50,9 @@
             <a>HORA DE MAL-SÚBITO</a>
         </footer>
         <section>
-            SECTION
+            <div id="hora-subito">
+                <input id="input-subito" type="time">
+            </div>
         </section>
     </div>
 
@@ -61,7 +63,7 @@
     </div>
 
     <div id="container-manipulacao">
-        <div class="item1">
+        <div id="A" class="item1">
             <a>INICIAR MASSAGEM CARDÍACA</a>
         </div>
         <div class="item2">
@@ -71,15 +73,19 @@
         </div>
         <div class="item3">
             <a>Cronômetro</a>
+            <hr>
+            <p id="temporizador">120</p>
         </div>
     </div>
 
     <script type="text/javascript">
-        var icon = document.querySelector('#icon')
-        var botaoMsg = document.querySelector('.item1');
+        var icon = document.querySelector('#icon');
+        var botaoRcp = document.querySelector('.item1');
+        var botaoEmg = document.querySelector('.cabeca');
 
         icon.addEventListener('click', menumb);
-        botaoMsg.addEventListener('click', rcp);
+        botaoRcp.addEventListener('click', rcp);
+        botaoEmg.addEventListener('click', emergencia);
 
         function menumb() {
             let menu = document.querySelector('.mobile-menu');
@@ -87,42 +93,118 @@
         }
 
         function emergencia() {
-            // Hora de início
-            let horainicio = document.querySelector('#hora-inicio');
+            // Declaração do botão "CHAMAR EMERGÊNCIA".
+            let botaoEmg = document.querySelector('.cabeca');
 
-            const data = new Date();
-            let hora = data.getHours();
-            let minuto = data.getMinutes();
-            let segundo = data.getSeconds();
-            let horario = `${hora}:${minuto}:${segundo}`;
+            // Verificando se o botão está ativado ou desativado.
+            if(botaoEmg.id == 'C'){
+                botaoEmg.innerHTML = 'EMERGÊNCIA A CAMINHO'
+                botaoEmg.style.backgroundColor = '#00FF00'
 
-            horainicio.innerHTML = horario;
+                // Hora de início
+                let horainicio = document.querySelector('#hora-inicio');
 
-            // Hora de Mal-Súbito
-            
-            // Ligação Automática
+                // Extração da hora atual e exibição para o usuário.
+                const data = new Date();
+                let hora = String(data.getHours()).padStart(2, '0');
+                let minuto = String(data.getMinutes()).padStart(2, '0');
+                let segundo = String(data.getSeconds()).padStart(2, '0');
+                let horario = `${hora}:${minuto}:${segundo}`;
+
+                // Criando variável com horário completo.
+                horainicio.innerHTML = horario;
+
+                // Declaraação do 'input' e 'container' da hora de mal-súbito.
+                let horaSubito = document.querySelector('#hora-subito');
+                let inputSubito = document.querySelector('#input-subito');
+
+                // Verificação: Há hora de mal-subito ou não e substituindo o 'input' pelo valor.
+                if (inputSubito.value != '') {
+                    horaSubito.innerHTML = `<p>${inputSubito.value}</p>`
+                }
+                else {
+                    horaSubito.innerHTML = 'Sem dados'
+                }
+                
+                // Mudança do status do botão para ativado.
+                botaoEmg.id = 'D'
+            }
+            else {
+                botaoEmg.innerHTML = 'CHAMAR EMERGÊNCIA'
+                botaoEmg.style.backgroundColor = '#004aad'
+
+                // Redefinindo a hora de início para vazio.
+                let horainicio = document.querySelector('#hora-inicio');
+                horainicio.innerHTML = ''
+
+                // Redefinindo o campo para a inclusão da hora de mal-súbito.
+                let horaSubito = document.querySelector('#hora-subito');
+                horaSubito.innerHTML = '<input id="input-subito" type="time">'
+
+                // Mudança do status do botão para desativado.
+                botaoEmg.id = 'C'
+            }
+
         }
 
         function rcp() {
+            // Declaração de variáveis.
             let circulo = document.querySelector('#circulo');
+            let botao = document.querySelector('.item1');
+            let temp = document.querySelector('#temporizador');
             const circulos = ['./img/circle1.png','./img/circle2.png'];
-            let i = 1
+            let a = 1;
+            let b = 120;
 
-            
+            // Verificando se o botão está ativado ou desativado.
+            if (botao.id == 'A') { //Se ativado.
+                // Mudar cor e texto do botão.
+                botao.style.backgroundColor = '#B22222'
+                botao.innerText = 'PARAR MASSAGEM CARDIACA'
 
-            function iniciarMetronomo () {
-                circulo.src = circulos[i];
-                i = (i + 1) % 2;
+                // Iniciar o Metrônomo.
+                function iniciarMetronomo() {
+                    circulo.src = circulos[a];
+                    a = (a + 1) % 2;
+                }
+
+                // Iniciar o temporizador.
+                function iniciarTemporizador() {
+                    if (b > 0)  {
+                        b--;
+                        temp.innerHTML = b;
+                    }
+                    else {
+                        b = 120;
+                        temp.innerHTML = b;
+                    }
+                }
+
+                // Intervalo de frequência do Metronomo.
+                intervaloA = setInterval(iniciarMetronomo, 500);
+
+                // Intervalo de frequencia do temporizador em 1-1 segundo.
+                intervaloB = setInterval(iniciarTemporizador, 1000);
+
+                //Mudar ID do botão, para quando desativar as funções.
+                botao.id = 'B';
             }
+            else { //Se desativado.
+                // Mudar cor e texto do botão.
+                botao.style.backgroundColor = '#0097b2'
+                botao.innerText = 'INICIAR MASSAGEM CARDIACA'
 
-            intervalo = setInterval(iniciarMetronomo, 5000);
+                // Parar o loop do metrônomo e voltar ao circulo padrão (preto).
+                clearInterval(intervaloA);
+                circulo.src = './img/circle0.png';
 
-            function pararMetronomo () {
-                clearInterval(intervalo);
-                circulo.src = './img/circle0.png'
+                // Parar o loop do temporizador e retornar ao valor inicial.
+                clearInterval(intervaloB);
+                temp.innerHTML = '120';
+
+                // Resetar o botão para a forma padrão.
+                botao.id = 'A';
             }
-
-            botaoMsg.addEventListener('click', pararMetronomo);
         }
     </script>
 </body>

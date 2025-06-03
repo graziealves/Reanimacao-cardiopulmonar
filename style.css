@@ -75,6 +75,9 @@ hr {
     #icon {
         display: none;
     }
+    #circulo {
+        width: 100px
+    }
 }
 
 #icon{
@@ -212,4 +215,3 @@ section{
     grid-area: item3;
     font-family: Arial, Helvetica, sans-serif;
 }
-
