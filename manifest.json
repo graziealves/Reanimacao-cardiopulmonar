@@ -1,0 +1,11 @@
+{
+    "short_name":"RCP",
+    "name":"Reanimação Cardiopulmonar",
+    "version":"1.0.0",
+    "description": "Um aplicativo para emergências, principalmente para paradas cardíacas.",
+    "icons": {
+        "48":"./img/icon-48.png",
+        "128":"./img/icon-128.png",
+        "520":"./img/icon-520.png"
+    },
+}
