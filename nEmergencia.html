@@ -15,7 +15,7 @@
         <div class="nav-list">
             <ul>
                 <li class="nav-item"><a href="/" class="nav-link">Reanimação Cardiopulmonar</a></li>
-                <li class="nav-item"><a href="https://graziealves.github.io/Reanimacao-cardiopulmonar/nEmergencia.html" class="nav-link">Contatos de Emergência</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Contatos de Emergência</a></li>
                 <li class="nav-item"><a href="#" class="nav-link">Quem somos</a></li>
             </ul>
         </div>
@@ -64,7 +64,7 @@
 
         function samu() {window.location.href = "tel:192"}
         function bomb() {window.location.href = "tel:193"}
-        function cvv() {window.location.href = "tel:188"}
+        function cvv() {window.location.href = "tel:" + encodeURIComponent('188')}
         function pm() {window.location.href = "tel:190"}
 
         botao1.addEventListener('click', samu);
