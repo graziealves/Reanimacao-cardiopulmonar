@@ -6,7 +6,7 @@
 }
 
 body{
-    background-color: #d5d5d5;
+    background-color: #ebe9e7;
 }
 
 hr {
@@ -17,7 +17,7 @@ hr {
     display: flex;
     justify-content: space-between;
     padding: 1.4rem 6rem;
-    background-color: pink;
+    background-color: #9bc2f9;
 }
 
 .logo img{
@@ -49,7 +49,7 @@ hr {
     text-decoration: none;
     font-size: 10;
     font-family: Arial, Helvetica, sans-serif;
-    color:white;
+    color:black;
 }
 
 .mobile-menu{
@@ -100,8 +100,9 @@ hr {
 .mobile-menu .nav-item{
     display: block;
     padding: 1rem 2rem;
-    background-color: black;
     margin: 5px;
+    background-color: #d5d5d5;
+    border-radius: 15px;
 }
 
 /* Manipulação - Primeira metade - grid*/
@@ -116,7 +117,7 @@ hr {
     "nav nav nav nav";
 
     gap:10px;
-    background-color: #a6a6a6;
+    background-color:#bee7e7;
     justify-content: center;
     column-gap: 40px;
     border-radius: 20px ;
@@ -142,6 +143,7 @@ hr {
   
 aside {
     grid-area: sidebar;
+    text-align: center;
 }
   
 main {
@@ -153,7 +155,7 @@ main {
 footer {
    grid-area: footer;
    font-family: Arial, Helvetica, sans-serif;
-   font-size: 15px;
+   text-align: center;
 }
 
 section{
@@ -214,3 +216,18 @@ section{
     grid-area: item3;
     font-family: Arial, Helvetica, sans-serif;
 }
+
+.item2 img{
+    padding-top: 20px;
+}
+
+.item3 p{
+    padding-top: 40px;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.controle-div{
+    padding-left: 55px;
+}
+    
