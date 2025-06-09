@@ -17,7 +17,7 @@ hr {
     display: flex;
     justify-content: space-between;
     padding: 1.4rem 6rem;
-    background-color: yellow;
+    background-color: pink;
 }
 
 .logo img{
@@ -27,6 +27,7 @@ hr {
     width: 70px;
     max-height: 60px;
     height: 60px;
+
 }
 
 .nav-list{
@@ -212,5 +213,4 @@ section{
 .item3{
     grid-area: item3;
     font-family: Arial, Helvetica, sans-serif;
-    padding: 50px;
 }
